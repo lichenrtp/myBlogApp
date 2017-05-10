@@ -1,0 +1,82 @@
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+header {
+	text-align: center;
+	padding: 1em;
+	border-bottom: 1px solid black;
+	background-color: grey;
+}
+
+footer {
+    padding: 1em;
+    color: white;
+    background-color: grey;
+    text-align: center;
+    clear: both;
+}
+
+nav {
+    float: left;
+    max-width: 450px;
+    margin: 0;
+    padding: 1em;
+}
+
+nav li {
+	padding: 1em;
+}
+
+article {
+    margin-left: 170px;
+    padding: 1em;
+    overflow: auto;
+    border-left: 1px solid grey;
+}
+
+.blogContainer {
+	margin-top: 30px;
+	border: 1px solid grep;
+	clear: right;
+}
+
+.navTitle {
+	font-size: 16px;
+	text-align: center;
+}
+
+.inputGroup {
+	margin-top: 10px;
+	display: flex;
+	flex-direction: row;
+}
+
+.label {
+	font-weight: bold;
+	font-size: 14px;
+	margin-right: 5px
+}
+
+.buttonGroup {
+	float: right;
+	padding: 10px;
+	padding-left: 0px;
+	margin-top: 20px;
+}
+
+.buttonGroup button {
+	margin-right: 8px;
+}
+
+.text {
+	color: red;
+	font-size: 14px;
+	margin-left: 200px;
+}
+
+.formTitle {
+	margin-right: 20px;
+}
+

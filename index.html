@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>My BLOG Demo</title>
+	<link rel="stylesheet" type="text/css" href="styles/app.css">
+	<script src="scripts/angular-1.5.9.min.js"></script>
+	<script src="scripts/app.js"></script>
+</head>
+<body ng-app="myBlogApp" ng-controller="myBlogCtrl">
+	<div class="container">
+		<header>
+			<h1>My Blog</h1>
+		</header>
+		<nav>
+		  <div class="title"> Past Posts</div>
+			<ul>
+				<li ng-repeat="blog in allBlogs">
+					{{blog.timestamp}} -- {{blog.title}}
+				</li>
+			</ul>
+  		<div class="buttonGroup">
+  			<button type="button" ng-click="newMode=true;">New</button>	
+  			<button ng-click="deleteAll()">Delete All</button>		
+  		</div>
+  		<div class="blogContainer" ng-if="newMode">
+  			<div class="navTitle" > New Post</div>
+  			<div class="inputGroup">
+  				<span class="formTitle">Title:</span><input type="text" ng-model="newBlog.title">
+  			</div>
+  			<div class="inputGroup">
+  				<span class="formTitle">Text:</span><textarea ng-model="newBlog.text" rows="4" cols="50">	
+  				</textarea>	
+  			</div>
+  			<div class="buttonGroup">
+  				<button style="float: right;" type="button" ng-click="create()">Save</button>
+  				<button style="float: right;" type="button" ng-click="hideCreateBlog()">Hide</button>
+  			</div>
+  		</div>
+  	</nav>
+  	<article> 
+  		<span ng-repeat="blog in allBlogs" >			
+  		<div class="blogContainer" ng-if="$index == selectedIdx && editMode">
+  			<div class="inputGroup">
+  				<span class="formTitle">Title:</span><input type="text" ng-model="editBlog.title"> 
+  			</div>
+  			<div class="inputGroup">
+  				<span class="formTitle">Text:</span><textarea rows="4" cols="50" ng-model="editBlog.text">	
+  				</textarea>	
+  			</div>
+  		</div>
+  		<div class="blogContainer" ng-if="$index != selectedIdx || !editMode">
+  			<div class="inputGroup">
+  				<div class="formTitle">Title:</div><div style="display: inline-flex;">{{blog.title}}</div>
+  			</div>
+  			<div class="inputGroup">
+  				<div class="formTitle">Text:</div><div style="display: inline-flex;">{{blog.text}}</div>	
+  			</div>
+  		</div> 				 						 		
+  		<div class="buttonGroup">
+  			<button type="button" ng-click="edit($index)" ng-if="!editMode || $index != selectedIdx">Edit</button>
+  			<button type="button" ng-click="update($index)" ng-if="editMode && $index == selectedIdx">Save</button>
+  			<button type="button" ng-click="cancelEdit($index)" ng-if="editMode && $index == selectedIdx">Cancel</button>
+  			<button type="button" ng-click="crud_delete($index)">Delete</button>		
+  		</div> 	
+  		</span>				
+  	</article>   
+		<footer>{{status}}</footer>
+	</div>
+</body>
+</html>
